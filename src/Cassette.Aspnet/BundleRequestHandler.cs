@@ -74,10 +74,7 @@ namespace Cassette.Aspnet
             var encoding = request.Headers["Accept-Encoding"];
             response.Filter = EncodeStreamAndAppendResponseHeaders(response.Filter, encoding);
             
-            using (var assetStream = bundle.OpenStream())
-            {
-                assetStream.CopyTo(response.OutputStream);
-            }
+            response.Write(bundle.GetContent());
         }
 
         void CacheLongTime(string actualETag)
