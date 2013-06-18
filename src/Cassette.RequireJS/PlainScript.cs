@@ -27,24 +27,24 @@ namespace Cassette.RequireJS
             return () =>
             {
                 var source = openSourceStream().ReadToEnd();
-                var output = Transform(source);
+                var output = Transform(source, asset);
                 return output.AsStream();
             };
         }
 
-        string Transform(string source)
+        string Transform(string source, IAsset asset)
         {
             if (ModuleReturnExpression != null)
             {
-                return ModuleWithReturn(source, ModuleReturnExpression);
+                return ModuleWithReturn(source, ModuleReturnExpression, asset);
             }
             
             if (TopLevelVariableFinder.JavaScriptContainsTopLevelVariable(source, Alias))
             {
-                return ModuleWithReturn(source, Alias);
+                return ModuleWithReturn(source, Alias, asset);
             }
-            
-            return ModuleWithoutReturn(source);
+
+            return ModuleWithoutReturn(source, asset);
         }
 
         IEnumerable<string> DependencyPaths
@@ -99,7 +99,7 @@ namespace Cassette.RequireJS
             }
         }
 
-        string ModuleWithoutReturn(string source)
+        string ModuleWithoutReturn(string source, IAsset asset)
         {
             return string.Format(
                 "define({0},{1},function({2}){{{3}\r\n}});",
@@ -110,7 +110,7 @@ namespace Cassette.RequireJS
             );
         }
 
-        string ModuleWithReturn(string source, string export)
+        string ModuleWithReturn(string source, string export, IAsset asset)
         {
             return string.Format(
                 "define({0},{1},function({2}){{{3}\r\nreturn {4};}});",

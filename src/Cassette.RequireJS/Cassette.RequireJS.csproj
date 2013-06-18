@@ -76,6 +76,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="PlainCoffeeScript.cs" />
     <Compile Include="RequireJsConfigAsset.cs" />
     <Compile Include="AlwaysValidAssetCacheValidator.cs" />
     <Compile Include="ModuleInitializer.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="IConfigurationScriptBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BundleCollectionExtensionsUtilities.cs" />
+    <Compile Include="RequireJSSettings.cs" />
     <Compile Include="ViewHelper.cs" />
   </ItemGroup>
   <ItemGroup>

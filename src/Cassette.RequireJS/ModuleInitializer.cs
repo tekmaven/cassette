@@ -59,6 +59,11 @@ namespace Cassette.RequireJS
 
         Module GetModule(IAsset asset, Bundle bundle)
         {
+            if (asset.Path.EndsWith(".coffee", StringComparison.OrdinalIgnoreCase))
+            {
+                return new PlainCoffeeScript(asset, bundle, this);
+            }
+
             var moduleDefinitionParser = ParseJavaScriptForModuleDefinition(asset);
             if (moduleDefinitionParser.FoundModuleDefinition)
             {

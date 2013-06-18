@@ -42,7 +42,7 @@ namespace Cassette.Scripts
             engine.LoadLibrary(
                 @"function compile(c) {
     try {
-        return { output: CoffeeScript.compile(c), error: '' };
+        return { output: CoffeeScript.compile(c, {bare: true}), error: '' };
     } catch (e) {
         return { error: e.message };
     }

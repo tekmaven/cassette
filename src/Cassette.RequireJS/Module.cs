@@ -14,6 +14,7 @@ namespace Cassette.RequireJS
             Asset = asset;
             Bundle = bundle;
             ModulePath = ConvertAssetPathToModulePath(asset.Path);
+            ModulePath = RequireJSSettings.ConvertAssetPathToModulePathCompleted(ModulePath);
             Alias = ConvertAssetPathToAlias(asset.Path);
         }
 

@@ -91,6 +91,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="CoffeeScriptCompileSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cassette.CoffeeScript.nutrans">
